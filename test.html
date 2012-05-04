@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+	<meta charset="utf-8">
+	<title>Kanishchev Konstantin web page</title>
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<!--[if lt IE 9]>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+	<link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+	<style> 
+	    body { padding-top: 60px; }
+	    circle {stroke: red; fill: none;}
+       	</style>
+    </head>
+
+    <body>
+
+	<div class="container">
+	    <div class="offset2 span8" id="canvas" style="text-align:center"></div>
+        <div class="offset2 span8">
+            <div class="btn-group-wrap" style="text-align:center">
+                <div class="btn-group" id="controls" style="margin:0 auto;display: inline-block;"> </div>
+            </div>
+        </div>
+	</div> <!-- /container -->
+
+
+	<script type="text/javascript" src="d3.v2.js"></script>
+	<script type="text/javascript">
+	    var d = [1,2,3,4,5,6,7,8,9,10];
+	    var svg = d3.select("#canvas").append("svg").attr("width","420").attr("height","300").style("border","solid");
+	    svg.selectAll("circle").data(d).enter()
+	    .append("circle").attr("cy","100").attr("r","30").attr("cx",function(d){return d*50;});
+	
+	    d3.select("#controls").selectAll("button").data(d).enter()
+	    	.append("button").attr("class","btn").text(String)
+		.on("click",	
+			function(d)
+			{
+				svg.selectAll("circle").transition()
+				.duration(function(dd){return 100*dd;}).attr("r",d*10)
+			}
+		);
+
+	</script>	
+	
+	<!-- Placed at the end of the document so the pages load faster -->
+	<!--
+	<script src="bootstrap/js/tests/vendor/jquery.js"></script>
+	<script src="bootstrap/js/bootstrap-transition.js"></script>
+	<script src="bootstrap/js/bootstrap-alert.js"></script>
+	<script src="bootstrap/js/bootstrap-modal.js"></script>
+	<script src="bootstrap/js/bootstrap-dropdown.js"></script>
+	<script src="bootstrap/js/bootstrap-scrollspy.js"></script>
+	<script src="bootstrap/js/bootstrap-tab.js"></script>
+	<script src="bootstrap/js/bootstrap-tooltip.js"></script>
+	<script src="bootstrap/js/bootstrap-popover.js"></script>
+	<script src="bootstrap/js/bootstrap-button.js"></script>
+	<script src="bootstrap/js/bootstrap-collapse.js"></script>
+	<script src="bootstrap/js/bootstrap-carousel.js"></script>
+	<script src="bootstrap/js/bootstrap-typeahead.js"></script>
+	-->
+    </body>
+</html>
