@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+	<meta charset="utf-8">
+	<title>Kanishchev Konstantin web page</title>
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<!--[if lt IE 9]>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+	<link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+	<style> 
+	    body { padding-top: 60px; }
+	    #chart svg {border: solid;}
+        rect       {stroke: none; fill:black;}
+	    #shbox     {fill:gray; stroke: black; stroke-width:1; stroke-dasharray: 4 2;}
+        line       {stroke-width:4;}
+	    circle     {stroke: red; fill: none;}
+	    path       {stroke: black; stroke-width:2; fill: none;}
+       	</style>
+    </head>
+
+    <body>
+
+	<div class="container">
+	    <div class="offset2 span8" id="chart" style="text-align:center"></div>
+	    <div class="offset2 span8" style="text-align:center">
+
+        <div class="btn-toolbar" id="controls">
+            <div class="btn-group"> <button class="btn" id="bbox">Place conductor</button> </div>
+            <div class="btn-group">
+                <button class="btn" id="bline">Place charge:</button>
+                <button class="btn btn-danger"  id="bplus" ><i class="icon-plus"></i></button>
+                <button class="btn btn-primary" id="bminus"><i class="icon-minus"></i></button>
+            </div>
+            <div class="btn-group"> <button class="btn">Clear</button> </div>
+        </div>
+        </div>
+	</div> <!-- /container -->
+
+
+	<script type="text/javascript" src="d3.v2.js">       </script>
+	<script type="text/javascript" src="grid.js">       </script>
+    <script type="text/javascript">
+        var w = 800, h = 800, st = 40;
+
+        var svg = d3.select("#chart")
+            .append("svg")
+            .attr("width", w)
+            .attr("height", h);
+
+         var grd = new Grid(svg,st);
+         grd.BoxMode();
+
+         d3.select("#bplus" ).on("click",grd.SetRedLineMode.bind (grd));
+         d3.select("#bminus").on("click",grd.SetBlueLineMode.bind(grd));
+
+         d3.select("#bbox"  ).on("click",grd. BoxMode.bind(grd));
+         d3.select("#bline" ).on("click",grd.LineMode.bind(grd));
+
+    </script>	
+	
+	<!-- Placed at the end of the document so the pages load faster -->
+	<!--
+	<script src="bootstrap/js/tests/vendor/jquery.js"></script>
+	<script src="bootstrap/js/bootstrap-transition.js"></script>
+	<script src="bootstrap/js/bootstrap-alert.js"></script>
+	<script src="bootstrap/js/bootstrap-modal.js"></script>
+	<script src="bootstrap/js/bootstrap-dropdown.js"></script>
+	<script src="bootstrap/js/bootstrap-scrollspy.js"></script>
+	<script src="bootstrap/js/bootstrap-tab.js"></script>
+	<script src="bootstrap/js/bootstrap-tooltip.js"></script>
+	<script src="bootstrap/js/bootstrap-popover.js"></script>
+	<script src="bootstrap/js/bootstrap-button.js"></script>
+	<script src="bootstrap/js/bootstrap-collapse.js"></script>
+	<script src="bootstrap/js/bootstrap-carousel.js"></script>
+	<script src="bootstrap/js/bootstrap-typeahead.js"></script>
+	-->
+    </body>
+</html>
