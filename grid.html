@@ -45,21 +45,18 @@
 	<script type="text/javascript" src="d3.v2.js">       </script>
 	<script type="text/javascript" src="grid.js">       </script>
     <script type="text/javascript">
-        var w = 800, h = 800, st = 40;
+        var step = 40;
 
-        var svg = d3.select("#chart")
-            .append("svg")
-            .attr("width", w)
-            .attr("height", h);
+        var width = d3.select("#chart").style("width");
 
-         var grd = new Grid(svg,st);
-         grd.BoxMode();
+        var grd = new Grid("#chart",10,10,step);
+        grd.BoxMode();
 
-         d3.select("#bplus" ).on("click",grd.SetRedLineMode.bind (grd));
-         d3.select("#bminus").on("click",grd.SetBlueLineMode.bind(grd));
+        d3.select("#bplus" ).on("click",grd.SetRedLineMode.bind (grd));
+        d3.select("#bminus").on("click",grd.SetBlueLineMode.bind(grd));
 
-         d3.select("#bbox"  ).on("click",grd. BoxMode.bind(grd));
-         d3.select("#bline" ).on("click",grd.LineMode.bind(grd));
+        d3.select("#bbox"  ).on("click",grd. BoxMode.bind(grd));
+        d3.select("#bline" ).on("click",grd.LineMode.bind(grd));
 
     </script>	
 	
